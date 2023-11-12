@@ -15,20 +15,23 @@ Target groups:
 * Promoting savings among individuals and institutions.
 The Bank has 26 branches in different regions.
 
-The goal of analytics is to assess the distribution of these risk-free loans among the population.
+The goal of the analytical layer is to assess the distribution of these risk-free loans among the population.
 One data entry represents one successful application.
 The individual debtors have been anonymized. 
 Thus, we do not know whether anyone succeeded in claiming financing multiple times.
 
-The fact analysed is the total sum of a loan.
+The fact analysed is the total sum of a loan and average amount awarded to an individual.
 
 Data source: 
-Loans of KSA development banks: https://od.data.gov.sa/Data/en/dataset/social-development-bank-loan-for-2022
-Location and population: https://simplemaps.com/data/sa-cities
+Loans of KSA development banks: 
+https://od.data.gov.sa/Data/en/dataset/social-development-bank-loan-for-2022
+Location and population: 
+https://simplemaps.com/data/sa-cities
 Cost of living in cities: 
-a) https://od.data.gov.sa/Data/en/dataset/average-prices-of-goods-and-services-in-sixteen-cities
-b) https://od.data.gov.sa/Data/en/dataset/average-prices-of-goods-and-services-in-sixteen-cities--2-
-Weather: https://en.climate-data.org/asia/saudi-arabia/asir-region-1999/
+https://od.data.gov.sa/Data/en/dataset/average-prices-of-goods-and-services-in-sixteen-cities
+https://od.data.gov.sa/Data/en/dataset/average-prices-of-goods-and-services-in-sixteen-cities--2-
+Weather: 
+https://en.climate-data.org/asia/saudi-arabia/asir-region-1999/
 
 
 * The code works - make sure to check your SQL user permissions to update and access local infiles.
