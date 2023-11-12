@@ -24,6 +24,8 @@ Thus, we do not know whether anyone succeeded in claiming financing multiple tim
 
 The fact analysed is the total sum of a loan and the average amount awarded to an individual.
 
+The final output is a datamart to display the average, minimum, and maximum loan values in various cities on a map.
+
 Data source: 
 Loans of KSA development banks: 
 https://od.data.gov.sa/Data/en/dataset/social-development-bank-loan-for-2022
