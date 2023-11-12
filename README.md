@@ -3,9 +3,9 @@ SQL Workbench
 
 Project: Loans Distributed by the Social Development Bank of Saudi Arabia in 2022
 
-The Social Development Bank is one of the cornerstones of the government of the Kingdom of Saudi Arabia. 
-The bank issues interest-free loans for citizens in order to drive development and welfare.
-Unlike in other countries, the scope of these loans is broad and largely promotes local values.
+The Social Development Bank is one of the key tools of the government of the Kingdom of Saudi Arabia. 
+The bank issues interest-free loans for citizens to drive the development and welfare of its citizens.
+Unlike in other countries, the scope of these loans is broad and largely promotes diverse local values.
 
 Target groups:
 * SMEs, employers, freelancers and emerging trades,
@@ -19,11 +19,9 @@ To limit the number of entries, only the business and project loans were include
 
 The goal of the analytical layer is to assess the distribution of these risk-free loans among the population.
 One data entry represents one successful application.
-The individual debtors have been anonymized. 
-Thus, we do not know whether anyone succeeded in claiming financing multiple times.
+The individual debtors have been anonymized. Thus, we do not know whether anyone succeeded in claiming financing multiple times.
 
 The fact analysed is the total sum of a loan and the average amount awarded to an individual.
-
 The final output is a datamart to display the average, minimum, and maximum loan values in various cities on a map.
 
 Data source: 
