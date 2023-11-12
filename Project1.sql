@@ -8,7 +8,7 @@ Project: Loans Distributed by the Social Development Bank of Saudi Arabia in 202
 
 The Social Development Bank is one of the cornerstones of the government of the Kingdom of Saudi Arabia. 
 The bank issues interest-free loans for citizens in order to drive development and welfare.
-Unlike in other countries, the scope of these loans is broad and largely promote local values.
+Unlike in other countries, the scope of these loans is broad and largely promotes local values.
 
 Target groups:
 * SMEs, employers, freelancers and emerging trades,
@@ -41,12 +41,12 @@ USE P1_saudi;
 
 
 -- Step 2: Create Tables and load data
--- review folder and set permissions
+/*review folder and set permissions
 -- SHOW VARIABLES LIKE "secure_file_priv";
 -- SHOW VARIABLES LIKE "local_infile";
 -- SET GLOBAL local_infile = 1;
 -- SHOW VARIABLES LIKE 'sql_mode';
-SET SQL_SAFE_UPDATES = 0;
+SET SQL_SAFE_UPDATES = 0;*/
 
 DROP TABLE IF EXISTS cities;
 CREATE TABLE cities (
@@ -68,9 +68,9 @@ CREATE TABLE cost_of_living (
     Furnished_apartment DOUBLE
 );
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.1/Uploads/cost_of_living.csv' INTO TABLE cost_of_living
-FIELDS TERMINATED BY ',' -- Change this if your CSV uses a different delimiter
-LINES TERMINATED BY '\r\n' -- Change this if your CSV uses a different line ending
-IGNORE 1 ROWS; -- Skip the first row containing column names
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS; 
 
 DROP TABLE IF EXISTS loans;
 CREATE TABLE loans (
@@ -89,9 +89,9 @@ CREATE TABLE loans (
     Value DECIMAL(10, 2)
 );
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.1/Uploads/loans.csv' INTO TABLE loans
-FIELDS TERMINATED BY ',' -- Change this if your CSV uses a different delimiter
-LINES TERMINATED BY '\r\n' -- Change this if your CSV uses a different line ending
-IGNORE 1 ROWS; -- Skip the first row containing column names
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS; 
 
 DROP TABLE IF EXISTS weather;
 CREATE TABLE weather (
@@ -104,9 +104,9 @@ CREATE TABLE weather (
     precipitation_mm Double
 );
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.1/Uploads/weather.csv' INTO TABLE weather
-FIELDS TERMINATED BY ',' -- Change this if your CSV uses a different delimiter
-LINES TERMINATED BY '\r\n' -- Change this if your CSV uses a different line ending
-IGNORE 1 ROWS; -- Skip the first row containing column names
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS; 
 
 ALTER TABLE weather
 CHANGE COLUMN `ď»żCity` City VARCHAR(255); 
@@ -115,7 +115,7 @@ Select * from weather;
 /*####################################################################################*
 Analytical LAYER:
 
-Step 1: Double check whether everything has been loaded*/
+Step 1: Double-check whether everything has been loaded*/
 SHOW TABLES;
 
 SELECT TABLE_NAME, GROUP_CONCAT(COLUMN_NAME) AS Header_Names
@@ -140,7 +140,7 @@ LEFT JOIN weather ON loans_preview.City = weather.City AND loans_preview.Date = 
 
 -- Step 4: Verify data quality
 
--- Double check count of cities
+-- Double-check the count of cities
 SELECT COUNT(DISTINCT City) FROM loans_preview;
 
 -- Descriptive statistics
@@ -160,7 +160,7 @@ ORDER BY city;
 -- ETL PIPLINE: Create an ETL pipeline using Stored procedures. 
 */
 
--- ETL Procedure to generate table with descriptive statistics in 1 procedure
+-- ETL Procedure to generate a table with descriptive statistics in 1 procedure
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS etl_descriptive;
@@ -180,7 +180,7 @@ BEGIN
         PRIMARY KEY (city)
     );
 
-    -- Extract Data
+    -- Extract Data and Transform
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_data AS
     SELECT 
         loans_preview.City,
@@ -201,7 +201,6 @@ BEGIN
     -- Load Data
     INSERT INTO Descriptive SELECT * FROM temp_data;
 
-    -- Clean up temporary table
     DROP TEMPORARY TABLE IF EXISTS temp_data;
 END //
 
@@ -260,10 +259,11 @@ select av_temp_fahrenheit from imperial;
 
 
 
--- ####################################################################################
--- DATA MART: Create Views as data marts.
+/*####################################################################################
+DATA MART: Create Views as data marts.
 
--- Data mart to view on a map count and average amount of loans in each city (dropping standard deviation)
+-- Step 1: Create View/Data mart to view on a map count and average amount of loans in each city 
+Dropping redundant variables such as standard deviation.*/
 DROP VIEW IF EXISTS descriptive_datamart;
 CREATE VIEW descriptive_datamart AS
 SELECT 
@@ -279,7 +279,7 @@ FROM Descriptive;
 SELECT * FROM descriptive_datamart;
 
 
--- Datamart for total amount by sector
+-- Datamart for the total amount by sector
 DROP VIEW IF EXISTS LoanAmountBySector;
 
 CREATE VIEW LoanAmountBySector AS
@@ -292,9 +292,9 @@ Select * from LoanAmountBySector;
 
 
 
--- Datamart for amount by sector by age - older men seem to receive more than older women
--- This may be because I have filtered for business and projects loans.
--- In the past, older women had higher barriers to entry to start a business than women nowadays.
+/* Datamart for amount by sector by age - older men seem to receive more than older women
+-- This may be because I have filtered for business and project loans.
+-- In the past, older women had higher barriers to entry to start a business than women nowadays.*/
 DROP VIEW IF EXISTS AgeGroupAnalysis;
 CREATE VIEW AgeGroupAnalysis AS
 SELECT
