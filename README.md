@@ -32,3 +32,4 @@ Weather: https://en.climate-data.org/asia/saudi-arabia/asir-region-1999/
 
 
 * The code works - make sure to check your SQL user permissions to update and access local infiles.
+* Occupancy has not been used yet.
