@@ -15,6 +15,8 @@ Target groups:
 * Promoting savings among individuals and institutions.
 The Bank has 26 branches in different regions.
 
+To limit the number of entries, only the business and project loans were included in the dataset on the github.
+
 The goal of the analytical layer is to assess the distribution of these risk-free loans among the population.
 One data entry represents one successful application.
 The individual debtors have been anonymized. 
