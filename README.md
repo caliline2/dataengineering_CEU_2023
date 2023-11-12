@@ -20,17 +20,17 @@ One data entry represents one successful application.
 The individual debtors have been anonymized. 
 Thus, we do not know whether anyone succeeded in claiming financing multiple times.
 
-The fact analysed is the total sum of a loan and average amount awarded to an individual.
+The fact analysed is the total sum of a loan and the average amount awarded to an individual.
 
 Data source: 
-Loans of KSA development banks: 
+*Loans of KSA development banks: 
 https://od.data.gov.sa/Data/en/dataset/social-development-bank-loan-for-2022
-Location and population: 
+*Location and population: 
 https://simplemaps.com/data/sa-cities
-Cost of living in cities: 
+*Cost of living in cities: 
 https://od.data.gov.sa/Data/en/dataset/average-prices-of-goods-and-services-in-sixteen-cities
 https://od.data.gov.sa/Data/en/dataset/average-prices-of-goods-and-services-in-sixteen-cities--2-
-Weather: 
+*Weather: 
 https://en.climate-data.org/asia/saudi-arabia/asir-region-1999/
 
 
